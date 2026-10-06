@@ -25,16 +25,16 @@ export function AuthDialog({ open, onOpenChange }: { open: boolean; onOpenChange
         const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: String(values.get('name') ?? '') }, emailRedirectTo: `${window.location.origin}/auth` } });
         if (error) throw error;
         if (!data.session) toast.success('Check your email to confirm your campus account.');
-        else { onOpenChange(false); await navigate({ to: '/dashboard' }); }
+        else { onOpenChange(false); await navigate({ to: '/' }); }
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error; onOpenChange(false); await navigate({ to: '/dashboard' });
+        if (error) throw error; onOpenChange(false); await navigate({ to: '/' });
       }
     } catch (error) { toast.error(error instanceof Error ? error.message : 'Unable to sign in.'); } finally { setBusy(false); }
   }
   async function google() {
     setBusy(true);
-    try { const result = await lovable.auth.signInWithOAuth('google', { redirect_uri: `${window.location.origin}/auth` }); if (result.error) throw result.error; if (!result.redirected) { onOpenChange(false); await navigate({ to: '/dashboard' }); } }
+    try { const result = await lovable.auth.signInWithOAuth('google', { redirect_uri: `${window.location.origin}/auth` }); if (result.error) throw result.error; if (!result.redirected) { onOpenChange(false); await navigate({ to: '/' }); } }
     catch (error) { toast.error(error instanceof Error ? error.message : 'Google sign-in could not start.'); } finally { setBusy(false); }
   }
   return <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="auth-dialog"><div className="brand-symbol"><GraduationCap /></div><DialogTitle>{mode === 'signup' ? 'Your campus starts here.' : mode === 'reset' ? 'Let’s get you back in.' : 'Welcome to your campus.'}</DialogTitle><DialogDescription>{mode === 'signup' ? 'Create your student account. Staff and parent access is assigned by the university.' : 'One account. Your whole university.'}</DialogDescription>
