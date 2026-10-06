@@ -6,7 +6,7 @@ export const getCampusAccount = createServerFn({ method: 'GET' }).middleware([re
   const profile = await context.supabase.from('profiles').select('*').eq('id', context.userId).maybeSingle();
   if (profile.error) throw new Error(profile.error.message);
   if (!profile.data) {
-    const created = await context.supabase.from('profiles').insert({ id: context.userId, full_name: String(context.claims.user_metadata?.full_name ?? '') }).select().single();
+    const created = await context.supabase.from('profiles').insert({ id: context.userId, full_name: String(context.claims.user_metadata?.['full_name'] ?? '') }).select().single();
     if (created.error) throw new Error(created.error.message);
     profile.data = created.data;
   }
