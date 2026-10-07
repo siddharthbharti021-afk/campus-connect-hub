@@ -203,10 +203,15 @@
 .success-state { text-align: center; display: grid; gap: .5rem; justify-items: center; padding: 1rem 0; }
 @media (max-width: 900px) { .hero, .campus-grid { grid-template-columns: 1fr; } .side-zone { position: static; } }
 
-/* Command-created wallpaper is independent of campus content. */
-.campus { padding-bottom: 7rem; position: relative; isolation: isolate; }
+/* Content and wallpaper share one user-panned scene; controls stay fixed. */
+.campus-workspace { min-height: 100vh; background: var(--campus-bg); overflow: clip; cursor: grab; }
+.campus-workspace.move-mode { touch-action: none; }
+.campus-workspace.is-panning { cursor: grabbing; user-select: none; }
+.campus-scene { position: relative; isolation: isolate; min-height: 100vh; }
+.campus { padding-bottom: 7rem; position: relative; background: transparent; pointer-events: none; }
+.campus-nav, .hero, .campus-grid { pointer-events: auto; }
 .campus-nav, .hero, .campus-grid { position: relative; z-index: 1; }
-.wallpaper-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.wallpaper-layer { position: absolute; inset: 0 0 auto; height: 100vh; z-index: 0; pointer-events: none; overflow: hidden; }
 .wallpaper-object { position: absolute; width: 48px; height: 48px; color: var(--ink); opacity: .65; pointer-events: auto; touch-action: none; cursor: grab; }
 .wallpaper-object:active { cursor: grabbing; opacity: 1; }
 .wallpaper-object svg { width: 44px; height: 44px; }

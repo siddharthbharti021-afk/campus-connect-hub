@@ -59,8 +59,9 @@ function CampusHome() {
   const name = account.data?.profile?.full_name || "there";
 
   return (
+    <>
+    <AnimatedWallpaper>
     <div className="campus">
-      <AnimatedWallpaper />
       <header className="campus-nav">
         <div className="brand"><span className="brand-dot" />Campusly</div>
         {userId ? (
@@ -108,10 +109,11 @@ function CampusHome() {
           <Assistant />
         </aside>
       </main>
-
+    </div>
+    </AnimatedWallpaper>
       <AuthDialog open={authOpen} onOpenChange={setAuthOpen} />
       <ServiceDialog service={active} onClose={() => setActive(null)} signedIn={Boolean(userId)} onSignIn={() => { setActive(null); setAuthOpen(true); }} />
-    </div>
+    </>
   );
 }
 

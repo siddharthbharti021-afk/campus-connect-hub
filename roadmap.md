@@ -1,6 +1,7 @@
 # Digital campus roadmap
 
 - [x] Add command-created, draggable animated wallpaper objects without changing the campus interface.
+- [ ] Move the campus page and wallpaper together through bounded background dragging; keep controls usable.
 
 - [ ] Deliver vibrant movable student workspace with service details and natural rearrangement.
 - [ ] Connect secure email and Google accounts, persistent service requests, campus chat, and presence.
