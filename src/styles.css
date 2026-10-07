@@ -204,8 +204,9 @@
 @media (max-width: 900px) { .hero, .campus-grid { grid-template-columns: 1fr; } .side-zone { position: static; } }
 
 /* Command-created wallpaper is independent of campus content. */
-.campus { padding-bottom: 7rem; }
-.wallpaper-layer { position: fixed; inset: 0; z-index: 20; pointer-events: none; overflow: hidden; }
+.campus { padding-bottom: 7rem; position: relative; isolation: isolate; }
+.campus-nav, .hero, .campus-grid { position: relative; z-index: 1; }
+.wallpaper-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .wallpaper-object { position: absolute; width: 48px; height: 48px; color: var(--ink); opacity: .65; pointer-events: auto; touch-action: none; cursor: grab; }
 .wallpaper-object:active { cursor: grabbing; opacity: 1; }
 .wallpaper-object svg { width: 44px; height: 44px; }
