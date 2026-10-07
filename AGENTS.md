@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Campus architecture
+- Keep command-created wallpaper effects in a client-side overlay with a bounded local command parser; decorative commands must not execute code or access campus records.
 - Use TanStack Start for the web campus and Cloud PostgreSQL for durable records; the hosted runtime is fixed and does not support a separate Next.js/Python/mobile deployment.
 - Keep university roles in a separate server-controlled roles table and enforce access with database policies; public workspace previews must never fetch private records.
 - Use dnd-kit sortable service widgets for user-driven movement and Cloud Realtime for campus presence/messages; motion must follow interaction rather than idle animation.

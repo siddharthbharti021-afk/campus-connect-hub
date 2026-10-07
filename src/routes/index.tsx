@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { AuthDialog } from "@/components/campus/auth-dialog";
 import { ServiceCard } from "@/components/campus/service-card";
+import { AnimatedWallpaper } from "@/components/campus/animated-wallpaper";
 import { ServiceDialog } from "@/components/campus/service-dialog";
 import { campusHead, services, type Service } from "@/lib/campus";
 import { getCampusAccount, getCampusRequests } from "@/lib/campus.functions";
@@ -59,6 +60,7 @@ function CampusHome() {
 
   return (
     <div className="campus">
+      <AnimatedWallpaper />
       <header className="campus-nav">
         <div className="brand"><span className="brand-dot" />Campusly</div>
         {userId ? (
